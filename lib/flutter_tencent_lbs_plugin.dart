@@ -1,8 +1,7 @@
-
 import 'flutter_tencent_lbs_plugin_platform_interface.dart';
 
-class FlutterTencentLbsPlugin {
+class FlutterTencentLBSPlugin {
   Future<String?> getPlatformVersion() {
-    return FlutterTencentLbsPluginPlatform.instance.getPlatformVersion();
+    return FlutterTencentLBSPluginPlatform.instance.getPlatformVersion();
   }
 }

@@ -4,25 +4,27 @@ import 'package:flutter_tencent_lbs_plugin/flutter_tencent_lbs_plugin_platform_i
 import 'package:flutter_tencent_lbs_plugin/flutter_tencent_lbs_plugin_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-class MockFlutterTencentLbsPluginPlatform
+class MockFlutterTencentLBSPluginPlatform
     with MockPlatformInterfaceMixin
-    implements FlutterTencentLbsPluginPlatform {
-
+    implements FlutterTencentLBSPluginPlatform {
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }
 
 void main() {
-  final FlutterTencentLbsPluginPlatform initialPlatform = FlutterTencentLbsPluginPlatform.instance;
+  final FlutterTencentLBSPluginPlatform initialPlatform =
+      FlutterTencentLBSPluginPlatform.instance;
 
-  test('$MethodChannelFlutterTencentLbsPlugin is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelFlutterTencentLbsPlugin>());
+  test('$MethodChannelFlutterTencentLBSPlugin is the default instance', () {
+    expect(
+        initialPlatform, isInstanceOf<MethodChannelFlutterTencentLBSPlugin>());
   });
 
   test('getPlatformVersion', () async {
-    FlutterTencentLbsPlugin flutterTencentLbsPlugin = FlutterTencentLbsPlugin();
-    MockFlutterTencentLbsPluginPlatform fakePlatform = MockFlutterTencentLbsPluginPlatform();
-    FlutterTencentLbsPluginPlatform.instance = fakePlatform;
+    FlutterTencentLBSPlugin flutterTencentLbsPlugin = FlutterTencentLBSPlugin();
+    MockFlutterTencentLBSPluginPlatform fakePlatform =
+        MockFlutterTencentLBSPluginPlatform();
+    FlutterTencentLBSPluginPlatform.instance = fakePlatform;
 
     expect(await flutterTencentLbsPlugin.getPlatformVersion(), '42');
   });

@@ -13,10 +13,10 @@ import org.mockito.Mockito
  * you can run them directly from IDEs that support JUnit such as Android Studio.
  */
 
-internal class FlutterTencentLbsPluginTest {
+internal class FlutterTencentLBSPluginTest {
   @Test
   fun onMethodCall_getPlatformVersion_returnsExpectedValue() {
-    val plugin = FlutterTencentLbsPlugin()
+    val plugin = FlutterTencentLBSPlugin()
 
     val call = MethodCall("getPlatformVersion", null)
     val mockResult: MethodChannel.Result = Mockito.mock(MethodChannel.Result::class.java)

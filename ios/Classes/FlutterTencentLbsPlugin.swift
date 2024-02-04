@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class FlutterTencentLbsPlugin: NSObject, FlutterPlugin {
+public class FlutterTencentLBSPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_tencent_lbs_plugin", binaryMessenger: registrar.messenger())
-    let instance = FlutterTencentLbsPlugin()
+    let instance = FlutterTencentLBSPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
