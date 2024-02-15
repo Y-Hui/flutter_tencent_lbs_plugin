@@ -1,7 +1,8 @@
 name: flutter_tencent_lbs_plugin
-description: A new Flutter plugin project.
+description: Flutter 腾讯位置服务/定位插件（第三方）
 version: 0.0.1
-homepage:
+homepage: https://github.com/Y-Hui/flutter_tencent_lbs_plugin
+repository: https://github.com/Y-Hui/flutter_tencent_lbs_plugin
 
 environment:
   sdk: '>=3.1.5 <4.0.0'
