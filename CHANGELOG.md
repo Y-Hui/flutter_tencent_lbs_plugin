@@ -1,3 +1,8 @@
+## 0.1.0
+
+🐞 fix: 修复安装插件后 App 无法在 iOS Simulator 启动的 bug
+
+
 ## 0.0.1
 
 ### TencentLBS 版本
