@@ -3,7 +3,7 @@
 
 > ⚠️ 注意：
 >
-> 1. 次插件在 iOS Simulator 中不生效。
+> 1. 此插件在 iOS Simulator 中不生效。
 >
 > 2. 各平台配置摘抄自官方文档，无法及时同步，仅供参考，具体配置请以官方文档为准<br/>
 >    [官方 Android 文档](https://lbs.qq.com/mobile/androidLocationSDK/androidGeoGuide/androidGeoOverview)<br/>
