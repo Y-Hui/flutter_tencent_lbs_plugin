@@ -1,5 +1,15 @@
 # flutter_tencent_lbs_plugin
 
+
+> ⚠️ 注意：
+>
+> 1. 次插件在 iOS Simulator 中不生效。
+>
+> 2. 各平台配置摘抄自官方文档，无法及时同步，仅供参考，具体配置请以官方文档为准<br/>
+>    [官方 Android 文档](https://lbs.qq.com/mobile/androidLocationSDK/androidGeoGuide/androidGeoOverview)<br/>
+>    [官方 iOS 文档](https://lbs.qq.com/mobile/iosLocationSDK/iosGeoGuide/iosGeoOverview)
+
+
 ## TencentLBS 版本
 
 | 平台    | 版本号   | 时间       |
@@ -38,12 +48,18 @@ locationPlugin.getLocationOnce().then((location) {
 });
 ```
 
-### 连续定位
+## 连续定位
 
 ```dart
+// 设置监听器
+locationPlugin.addLocationListener((location) {
+  print(location.toJson());
+});
+
+// 开启连续定位
 locationPlugin.getLocation(
   interval: 1000 * 15, // 获取定位的间隔时间
-  backgroundLocation: true, // 是否需要设置后台定位
+  backgroundLocation: true, // 是否需要设置后台定位，设置为 true 时，请确保 Android、iOS 平台进行相应配置，否则可能抛出异常
   // Android 端后台定位需要配置常驻通知
   androidNotificationOptions: AndroidNotificationOptions(
     id: 100,
@@ -61,12 +77,11 @@ locationPlugin.getLocation(
 );
 ```
 
+## 停止连续定位
 
-> ⚠️ 注意：各平台配置摘抄自官方文档，无法及时同步，仅供参考，具体配置请以官方文档为准
->
-> [官方 Android 文档](https://lbs.qq.com/mobile/androidLocationSDK/androidGeoGuide/androidGeoOverview)
->
-> [官方 iOS 文档](https://lbs.qq.com/mobile/iosLocationSDK/iosGeoGuide/iosGeoOverview)
+```dart
+locationPlugin.stop()
+```
 
 
 ## Android 端配置
@@ -143,6 +158,15 @@ locationPlugin.getLocation(
 ### 无法获取地址描述
 
 Android：需要使用 WGS84 坐标才能获取地址描述
+
 iOS：需要使用 GCJ02 坐标才能获取地址描述
 
 > 这似乎是 SDK 的默认行为
+
+
+
+## 参考
+
+[tencent_location](https://github.com/maxleexyz/tencent_location)
+
+[flutter_tencent_location](https://pub.dev/packages/flutter_tencent_location)

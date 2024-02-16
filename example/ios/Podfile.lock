@@ -31,7 +31,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_local_notifications: 4cde75091f6327eb8517fa068a0a5950212d2086
-  flutter_tencent_lbs_plugin: 765626ae4df3ee18e051f91dd0d88b4f81a45fb1
+  flutter_tencent_lbs_plugin: 44b9444bb4db98f2c78b46e1159a58b2a78e486b
   integration_test: 13825b8a9334a850581300559b8839134b124670
   permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
 
