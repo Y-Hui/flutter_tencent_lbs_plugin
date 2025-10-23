@@ -17,7 +17,7 @@ class FlutterTencentLBSPlugin {
     required String key,
 
     /// 经纬度坐标类型
-    int coordinateType = TencentLBSLocationCoordinateType.GCJ02,
+    int? coordinateType,
 
     /// 设置是否允许MockGPS
     bool mockEnable = false,
@@ -52,7 +52,7 @@ class FlutterTencentLBSPlugin {
   }) async {
     return await FlutterTencentLBSPluginPlatform.instance.init(
       key: key,
-      coordinateType: coordinateType,
+      coordinateType: coordinateType ?? TencentLBSLocationCoordinateType.GCJ02,
       mockEnable: mockEnable,
       requestLevel: requestLevel,
       locMode: locMode,
