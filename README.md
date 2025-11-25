@@ -14,8 +14,8 @@
 
 | 平台    | 版本号   | 时间       |
 | ------- | -------- | ---------- |
-| Android | v7.5.4.3 | 2024-01-23 |
-| iOS     | v4.2.0   | 2023-11-03 |
+| Android | v7.6.1.4 | 2025-11-13 |
+| iOS     | v4.3.0   | 2025-11-11 |
 
 ## 使用方式
 
@@ -88,12 +88,9 @@ locationPlugin.stop()
 
 ### 配置 Key
 
-```xml
-<application>
-    ...
-    <meta-data android:name="TencentMapSDK" android:value="您申请的Key" />
-</application>
-```
+```dart
+   locationPlugin.init(key: "YOUR KEY");
+   ```
 
 ### 权限配置
 

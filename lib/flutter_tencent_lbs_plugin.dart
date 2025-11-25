@@ -13,7 +13,7 @@ export 'model/enum.dart';
 
 class FlutterTencentLBSPlugin {
   Future<bool> init({
-    /// 申请的 apiKey（仅对 iOS 生效，Android 需要在 AndroidManifest.xml 中设置）
+    /// 申请的 apiKey
     required String key,
 
     /// 经纬度坐标类型

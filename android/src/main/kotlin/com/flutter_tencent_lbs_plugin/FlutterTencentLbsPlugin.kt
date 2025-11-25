@@ -20,7 +20,11 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
-import com.flutter_tencent_lbs_plugin.models.*
+import com.flutter_tencent_lbs_plugin.models.InitOptions
+import com.flutter_tencent_lbs_plugin.models.NotificationIconData
+import com.flutter_tencent_lbs_plugin.models.NotificationOptions
+import com.flutter_tencent_lbs_plugin.utils.JsonUtils
+import com.tencent.map.geolocation.TencentLocationManagerOptions
 
 class FlutterTencentLBSPlugin : FlutterPlugin, MethodCallHandler, TencentLocationListener {
     private lateinit var channel: MethodChannel
@@ -72,7 +76,7 @@ class FlutterTencentLBSPlugin : FlutterPlugin, MethodCallHandler, TencentLocatio
     }
 
     override fun onLocationChanged(location: TencentLocation?, error: Int, reason: String?) {
-        if (error == TencentLocation.ERROR_OK) {
+        if (error == TencentLocation.ERROR_OK && location != null) {
             val result = HashMap<String, Any?>()
             result["name"] = location?.name
             result["latitude"] = location?.latitude
@@ -97,7 +101,15 @@ class FlutterTencentLBSPlugin : FlutterPlugin, MethodCallHandler, TencentLocatio
     }
 
     private fun initTencentLBS(call: MethodCall, result: Result) {
-        val args = call.arguments as Map<*, *>?
+        val args = call.arguments
+        val argsMap = args as? Map<*, *>
+        if (argsMap == null) {
+            result.error("INVALID_ARGUMENTS", "Arguments must be a map", null)
+            return
+        }
+
+        val apiKey = JsonUtils.getString(argsMap, "key") ?: ""
+        TencentLocationManagerOptions.setKey(apiKey)
         locationManager = TencentLocationManager.getInstance(applicationContext)
         tencentLocationRequest = TencentLocationRequest.create()
 
@@ -130,16 +142,16 @@ class FlutterTencentLBSPlugin : FlutterPlugin, MethodCallHandler, TencentLocatio
     // 连续定位
     private fun getLocation(call: MethodCall) {
         val args = call.arguments as Map<*, *>?
-        val interval: Long = getInt(args, "interval")?.toLong() ?: (1000 * 15)
-        val backgroundLocation = getBoolean(args, "backgroundLocation") ?: false
+        val interval: Long = JsonUtils.getInt(args, "interval")?.toLong() ?: (1000 * 15)
+        val backgroundLocation = JsonUtils.getBoolean(args, "backgroundLocation") ?: false
         if (!isListenLocationUpdates) {
             isListenLocationUpdates = true
             tencentLocationRequest.interval = interval
             if (backgroundLocation) {
-                val options = NotificationOptions.getData(getMap(args, "androidNotificationOptions"))
+                val options = NotificationOptions.getData(JsonUtils.getMap(args, "androidNotificationOptions"))
                 locationManager.enableForegroundLocation(options.id, buildNotification(options))
-                locationManager.requestLocationUpdates(tencentLocationRequest, this)
             }
+            locationManager.requestLocationUpdates(tencentLocationRequest, this)
         }
     }
 
