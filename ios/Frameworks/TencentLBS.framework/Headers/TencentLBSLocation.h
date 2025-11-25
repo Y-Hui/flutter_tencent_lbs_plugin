@@ -23,16 +23,10 @@ typedef NS_ENUM(NSInteger, TencentLBSDRProvider) {
 
 typedef NS_OPTIONS(NSUInteger, TencentLBSLocationFake) {
     TencentLBSLocationFakeOK                    = 0,        //!< 正常
-    TencentLBSLocationFakeCoordinate            = 1 << 0,   //!< 坐标是否被 hook 校验
-    TencentLBSLocationFakeSpeed                 = 1 << 1,   //!< 速度合法性校验
-    TencentLBSLocationFakeCrc                   = 1 << 2,   //!< 循环冗余校验
-    TencentLBSLocationFakeMotion                = 1 << 3,   //!< 运动状态和定位点校验
-    TencentLBSLocationFakeMotionData            = 1 << 4,   //!< 传感器数据校验
-    TencentLBSLocationFakeMotionType            = 1 << 5,   //!< 系统的运动状态和传感器识别的运动状态校验
-    TencentLBSLocationFakeFirstCallbackSpeed    = 1 << 6,   //!< 系统首次定位回调速度校验
-    TencentLBSLocationFakeSimulation            = 1 << 7,   //!< 模拟位置校验
-    TencentLBSLocationFakeLocationAge           = 1 << 8,   //!< 系统当前时间与 Location  的时间校验
-    TencentLBSLocationFakeLocationSame          = 1 << 9,   //!< 系统一直回调同一个点校验
+    TencentLBSLocationFakeFirstCallbackSpeed    = 1 << 6,   //!< 64, 系统首次定位回调速度校验
+    TencentLBSLocationFakeSimulation            = 1 << 7,   //!< 128, 模拟位置校验
+    TencentLBSLocationFakeLocationAge           = 1 << 8,   //!< 256, 系统当前时间与 Location  的时间校验
+    TencentLBSLocationFakeLocationSame          = 1 << 9,   //!< 512, 系统一直回调同一个点校验
 };
 
 typedef NS_ENUM(NSInteger, TencentLBSLocationProvider) {
